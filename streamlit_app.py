@@ -3,24 +3,7 @@ import re
 import string
 import time
 import pandas as pd
-from openai import OpenAI
 import streamlit as st
-
-client: OpenAI = None
-
-
-# Load environment variables from -env file
-def load_env_variables():
-    try:
-        from dotenv import load_dotenv
-
-        load_dotenv()  # Cargar variables desde .env
-        print("INFO: Archivo .env cargado.")
-    except ImportError:
-        print(
-            "INFO: python-dotenv no está instalado, no se cargará .env automáticamente en main.py."
-        )
-
 
 def build_gui():
     st.title("Hello, GenAI!")
@@ -105,13 +88,6 @@ def clean_text(text: str) -> str:
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
-
 if __name__ == "__main__":
-    load_env_variables()
-
-
-if __name__ == "__main__":
-    load_env_variables()
     # Initialize OpenAI client
-    client = OpenAI()
     build_gui()
